@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocaml-http-server
+  labels:
+    app: ocaml-http-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ocaml-http-server
+  template:
+    metadata:
+      labels:
+        app: ocaml-http-server
+    spec:
+      containers:
+      - name: ocaml-http-server01
+        image: ocaml-http-server.sakuracr.jp/ocaml-http-server:latest
+        ports:
+        - containerPort: 8008
